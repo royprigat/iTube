@@ -1,3 +1,3 @@
 # iTube
 ## A Youtube Client
-### Set your personal library from selected yotube videos
+<p>Set your personal library from selected yotube videos</p>
