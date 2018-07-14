@@ -1,0 +1,25 @@
+{
+  "name": "iTube",
+  "version": "1.0.0",
+  "description": "A Youtube Client",
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.11.2",
+    "npm": "6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royprigat/iTube.git"
+  },
+  "keywords": [],
+  "author": "Roy Prigat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royprigat/iTube/issues"
+  },
+  "homepage": "https://github.com/royprigat/iTube#readme"
+}
