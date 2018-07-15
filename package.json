@@ -17,7 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/royprigat/iTube.git"
   },
-  "keywords": ["react", "typescript", "express"],
+  "keywords": [
+    "react",
+    "typescript",
+    "express"
+  ],
   "author": "Roy Prigat",
   "license": "ISC",
   "bugs": {
@@ -25,6 +29,8 @@
   },
   "homepage": "https://github.com/royprigat/iTube#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0"
