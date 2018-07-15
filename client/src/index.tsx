@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 
 
-const checkAuth = () => false;
+const checkAuth = () => true;
 
 checkAuth() ? 
   (ReactDOM.render(<App />, document.getElementById('root') as HTMLElement)) : 
