@@ -101,5 +101,4 @@ typings/
 # Serverless directories
 .serverless
 
-auth.js
 client_secret.json
