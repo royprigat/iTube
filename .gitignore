@@ -102,3 +102,4 @@ typings/
 .serverless
 
 auth.js
+client_secret.json
