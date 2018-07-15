@@ -5,10 +5,6 @@ const clientID = keys.web.client_id;
 const clientSecret = keys.web.client_secret;
 const redirectURI = keys.web.redirect_uris[0];
 
-const scopes = [
-    'https://www.googleapis.com/auth/plus.me',
-    'https://www.googleapis.com/auth/youtube.readonly'
-];
 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 module.exports = (passport) => {

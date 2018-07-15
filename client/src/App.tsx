@@ -1,8 +1,7 @@
-import { withStyles } from "@material-ui/core/styles";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import * as React from "react";
 import "./App.css";
-import Navbar from "./Components/Navbar";
+import Login from "./Components/Login/Login";
 
 const theme = createMuiTheme({
   palette: {
@@ -21,24 +20,18 @@ const theme = createMuiTheme({
   }
 });
 
-const styles = {
-  paper: {
-    padding: 10
-  },
-  root: {
-    flexGrow: 1
+class App extends React.Component {
+  constructor(props: Readonly<{}>) {
+    super(props);
   }
-};
 
-function App(props: { classes: any; }) {
-  const { classes } = props;
-  return (
-    <MuiThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <Navbar />
-      </div>
-    </MuiThemeProvider>
-  );
+  public render() {
+    return (
+      <MuiThemeProvider theme={theme}>
+          <Login />
+      </MuiThemeProvider>
+    );
+  }
 }
 
-export default withStyles(styles)(App);
+export default App;
