@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "",
+    "dev": "nodemon server.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/royprigat/iTube.git"
   },
-  "keywords": [],
+  "keywords": ["react", "typescript", "express"],
   "author": "Roy Prigat",
   "license": "ISC",
   "bugs": {
@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/royprigat/iTube#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"
