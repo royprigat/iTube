@@ -21,14 +21,7 @@ const theme = createMuiTheme({
     }
   }
 });
-const config = {
-  apiKey: "AIzaSyAPfO1SyOLFUwANAc3NxvqiTcGooNoTr68",
-  authDomain: "itube-210217.firebaseapp.com",
-  databaseURL: "https://itube-210217.firebaseio.com",
-  messagingSenderId: "804723299124",
-  projectId: "itube-210217",
-  storageBucket: "itube-210217.appspot.com"
-};
+
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope("https://www.googleapis.com/auth/youtube.readonly");
 firebase.initializeApp(config);
