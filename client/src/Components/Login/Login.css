@@ -141,6 +141,6 @@ body {
 
 @media only screen and (max-height: 400px) {
     .form-container {
-        height: 220px;
+        height: 190px;
     }
 } 
