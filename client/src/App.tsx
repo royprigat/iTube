@@ -1,6 +1,5 @@
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import * as React from "react";
-import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navbar/Navbar";
@@ -27,29 +26,35 @@ interface IProps {
 }
 
 interface IState {
+  authorized?: boolean
   authToken?: string;
 }
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.getAuth = this.getAuth.bind(this);
+    this.state = {
+      authToken: "",
+      authorized: false
+    }
+
+    this.setToken = this.setToken.bind(this);
   }
 
-  public getAuth() {
-    this.setState({ authToken: "1" })
-  }
+  public setToken(response: any) {
+    const id_token = response.getAuthResponse().id_token;
+    this.setState({ authToken: id_token, authorized: true })
+  };
 
   public render() {
+    const { authorized } = this.state;
     return (
       <MuiThemeProvider theme={theme}>
-        <Router>
-            <div>
-                <Route path="/login" component={Login}/>
-                <Route path="/app/home" component={Navbar}/>
-                <Redirect from="/" to="/login"/>
-            </div>
-        </Router>
+        {
+          authorized ?
+          <Navbar/> :
+          <Login/>
+        }
       </MuiThemeProvider>
     );
   }
