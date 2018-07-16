@@ -1,20 +1,30 @@
+import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import FormLabel from "@material-ui/core/FormLabel";
 import Paper from "@material-ui/core/Paper";
 import * as React from "react";
 import "./Login.css";
 
-function Login() {
+interface ILoginProps {
+  getToken?: () => void
+  token?: string
+}
+
+function Login(props: ILoginProps) {
+  const { getToken, token } = props;
   return (
     <div className="area">
       <Paper elevation={8} className="form-container">
-          <FormControl component="fieldset" className="form">
-            <FormLabel component="legend">iTube</FormLabel>
-            <FormGroup>Google Sign In</FormGroup>
-            <FormHelperText className="credit">Made with ♥️ by Roy Prigat</FormHelperText>
-          </FormControl>
+        <FormControl component="fieldset" className="form">
+          <h2>iTube</h2>
+          <Button variant="contained" color="primary" onClick={getToken} className="signBtn">
+              Sign In
+          </Button>
+          <div>{token}</div>
+          <FormHelperText className="credit">
+            Made with ♥️ by Roy Prigat
+          </FormHelperText>
+        </FormControl>
       </Paper>
 
       <ul className="circles">
