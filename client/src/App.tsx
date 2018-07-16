@@ -38,13 +38,12 @@ class App extends React.Component<IProps, IState> {
       authorized: false
     }
 
-    this.setToken = this.setToken.bind(this);
+    this.signIn = this.signIn.bind(this);
   }
 
-  public setToken(response: any) {
-    const id_token = response.getAuthResponse().id_token;
-    this.setState({ authToken: id_token, authorized: true })
-  };
+  public signIn() {
+    alert("Hi");
+  }
 
   public render() {
     const { authorized } = this.state;

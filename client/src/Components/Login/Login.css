@@ -34,7 +34,7 @@ h2 {
     position: absolute !important;
     width: 180px;
     height: 35px;
-    left: 18%;
+    left: 17%;
     bottom: 45px;
     box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.5) !important;
     padding: 0px !important;
@@ -55,8 +55,9 @@ h2 {
 .credit {
     position: absolute;
     bottom: 0px;
-    left: 25%;
-    width: 140px;
+    left: 20%;
+    text-align: center !important;
+    width: 160px !important;
 }
 
 .area {
@@ -183,7 +184,7 @@ h2 {
         left: 12%;
     }
     .credit {
-        left: 20%;
+        left: 16%;
     }
 } 
 

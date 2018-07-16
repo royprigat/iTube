@@ -29,7 +29,9 @@
   },
   "homepage": "https://github.com/royprigat/iTube#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"

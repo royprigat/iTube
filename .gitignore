@@ -102,3 +102,4 @@ typings/
 .serverless
 
 client_secret.json
+auth.ts
