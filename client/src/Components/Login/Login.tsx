@@ -9,13 +9,12 @@ import "./Login.css";
 function Login() {
   return (
     <div className="area">
-      <Paper elevation={5} className="form-container">
-        <FormControl component="fieldset">
-          <FormLabel component="legend">iTube</FormLabel>
-          <FormGroup>Hello</FormGroup>
-          
-          <FormHelperText>Made with ♥️ by Roy Prigat</FormHelperText>
-        </FormControl>
+      <Paper elevation={8} className="form-container">
+          <FormControl component="fieldset" className="form">
+            <FormLabel component="legend">iTube</FormLabel>
+            <FormGroup>Google Sign In</FormGroup>
+            <FormHelperText className="credit">Made with ♥️ by Roy Prigat</FormHelperText>
+          </FormControl>
       </Paper>
 
       <ul className="circles">
