@@ -1,6 +1,6 @@
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import * as firebase from "firebase";
 import * as React from "react";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navbar/Navbar";
@@ -22,10 +22,6 @@ const theme = createMuiTheme({
   }
 });
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope("https://www.googleapis.com/auth/youtube.readonly");
-firebase.initializeApp(config);
-
 interface IProps {
   authToken?: string;
 }
@@ -37,34 +33,23 @@ interface IState {
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {
-      authToken: this.props.authToken
-    };
-
     this.getAuth = this.getAuth.bind(this);
   }
 
   public getAuth() {
-    firebase.auth().signInWithRedirect(provider);
-    firebase.auth().getRedirectResult()
-      .then(result => {
-        if (result.credential) {
-          this.setState({ authToken: "1" });
-        }
-      })
-      .catch(error => {
-        this.setState({ authToken: "1" });
-      });
+    this.setState({ authToken: "1" })
   }
 
   public render() {
     return (
       <MuiThemeProvider theme={theme}>
-        {this.state.authToken === "1" ? (
-          <Navbar />
-        ) : (
-          <Login getToken={this.getAuth} token={this.state.authToken} />
-        )}
+        <Router>
+            <div>
+                <Route path="/login" component={Login}/>
+                <Route path="/app/home" component={Navbar}/>
+                <Redirect from="/" to="/login"/>
+            </div>
+        </Router>
       </MuiThemeProvider>
     );
   }

@@ -17,6 +17,7 @@ function Login(props: ILoginProps) {
       <Paper elevation={8} className="form-container">
         <FormControl component="fieldset" className="form">
           <h2>iTube</h2>
+          <div id="firebaseui-auth-container"/>
           <Button variant="contained" color="primary" onClick={getToken} className="signBtn">
               Sign In
           </Button>
