@@ -30,13 +30,11 @@ app.get("/auth/google",passport.authenticate("google", {
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/login');
   });
 
-
-app.use(express.static(path.join(__dirname, "client/build")));
-
-app.get("*", (req,res) => {
+app.get("/login", (req,res) => {
+  app.use(express.static(path.join(__dirname, "client/build")));
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
