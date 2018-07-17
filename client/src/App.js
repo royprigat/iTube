@@ -29,20 +29,32 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = {
-    isSignedIn: false
+    isSignedIn: false,
+    accessKey: null
   };
 
   uiConfig = {
-    signInFlow: "popup",
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    signInFlow: "redirect",
+    signInOptions: [{
+      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+    },
+    {
+     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+    }],
     callbacks: {
-      signInSuccessWithAuthResult: () => false
+      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+        this.setToken(authResult.user, authResult.credential);
+      }
     }
   };
 
+  setToken(user, credential) {
+    this.setState({accessKey: credential.accessToken})
+  }
+
   componentDidMount() {
-    this.unregisterAuthObserver = firebase
-      .auth()
+    this.unregisterAuthObserver = firebase.auth()
       .onAuthStateChanged(user => this.setState({ isSignedIn: !!user }));
   }
 
@@ -54,7 +66,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         {this.state.isSignedIn ? (
-        <Home firebase={firebase} />
+        <Home firebase={firebase} accessKey={this.state.accessKey} />
         ) : (
         <Login auth={firebase.auth} config={this.uiConfig} />
         )}
