@@ -6,14 +6,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 
 // Configure Firebase.
-const config = {
-  apiKey: "AIzaSyDa40DJrn49u6OxoPAqEKh-ir2568ChjqE",
-  authDomain: "itube-210421.firebaseapp.com",
-  databaseURL: "https://itube-210421.firebaseio.com",
-  projectId: "itube-210421",
-  storageBucket: "",
-  messagingSenderId: "881516146615"
-};
+
 
 firebase.initializeApp(config);
 
@@ -42,13 +35,15 @@ class App extends Component {
 
   uiConfig = {
     signInFlow: "popup",
-    signInOptions: [{
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      scopes: ['https://www.googleapis.com/auth/youtube.readonly']
-    },
-    {
-     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-    }],
+    signInOptions: [
+      {
+        provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        scopes: config.scopes
+      },
+      {
+        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+      }
+    ],
     callbacks: {
       signInSuccessWithAuthResult: (authResult, redirectUrl) => {
         this.setToken(authResult.user, authResult.credential);
@@ -57,12 +52,16 @@ class App extends Component {
   };
 
   setToken(user, credential) {
-    this.setState({accessKey: credential.accessToken})
+    this.setState({ accessKey: credential.accessToken });
   }
 
+
+
   componentDidMount() {
-    this.unregisterAuthObserver = firebase.auth()
-      .onAuthStateChanged(user => this.setState({ isSignedIn: !!user }));
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user })
+      
+    });
   }
 
   componentWillUnmount() {
@@ -73,9 +72,9 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         {this.state.isSignedIn ? (
-        <Home firebase={firebase} accessKey={this.state.accessKey} />
+          <Home firebase={firebase} accessKey={this.state.accessKey} />
         ) : (
-        <Login auth={firebase.auth} config={this.uiConfig} />
+          <Login auth={firebase.auth} config={this.uiConfig} />
         )}
       </MuiThemeProvider>
     );

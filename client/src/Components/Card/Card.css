@@ -1,0 +1,20 @@
+:root {
+    --yellow: #F0D839;
+    --green: #80BF32;
+    --blue: #6FACFF;
+  }
+
+.card {
+    width: 95%;
+    height: 300px;
+}
+
+.yellow {
+    background: var(--yellow) !important;
+}
+.blue {
+    background: var(--blue) !important;
+}
+.green {
+    background: var(--green) !important;
+}
