@@ -6,14 +6,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 
 // Configure Firebase.
-const config = {
-  apiKey: "AIzaSyDa40DJrn49u6OxoPAqEKh-ir2568ChjqE",
-  authDomain: "itube-210421.firebaseapp.com",
-  databaseURL: "https://itube-210421.firebaseio.com",
-  projectId: "itube-210421",
-  storageBucket: "",
-  messagingSenderId: "881516146615"
-};
+
 
 firebase.initializeApp(config);
 
@@ -41,7 +34,7 @@ class App extends Component {
   };
 
   uiConfig = {
-    signInFlow: "redirect",
+    signInFlow: "popup",
     signInOptions: [{
       provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       scopes: ['https://www.googleapis.com/auth/youtube.readonly']
