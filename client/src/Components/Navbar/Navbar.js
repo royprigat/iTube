@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import * as React from "react";
+import React from "react";
 import './Navbar.css';
 
 const styles = {
@@ -20,8 +20,7 @@ const styles = {
   }
 };
 
-function Navbar(props: { classes: any }) {
-  const { classes } = props;
+const Navbar = ({ classes, firebase }) => {
   return (
       <div className={classes.root}>
       <AppBar position="static">
@@ -29,7 +28,7 @@ function Navbar(props: { classes: any }) {
           <Typography variant="title" color="inherit" className={classes.flex}>
             iTube
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={() => firebase.auth().signOut()}>Logout</Button>
         </Toolbar>
       </AppBar>
     </div>

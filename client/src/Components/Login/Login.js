@@ -1,25 +1,17 @@
-import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Paper from "@material-ui/core/Paper";
-import * as React from "react";
-import googleIcon from "../../assets/google.svg";
+import React from "react";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "./Login.css";
 
-interface ILoginProps {
-  signIn?: any;
-}
-
-function Login(props: ILoginProps) {
-  return (
+const Login = ({ auth, config }) =>
+  (
     <div className="area">
       <Paper elevation={8} className="form-container">
         <FormControl component="fieldset" className="form">
           <h2>iTube</h2>
-          <Button className="signBtn" href="/auth/google">
-            <img src={googleIcon} className="google-icon" />
-            <span style={{ marginLeft: "20px" }}>Sign in with Google</span>
-          </Button>
+          <StyledFirebaseAuth uiConfig={config} firebaseAuth={auth()}/>
           <FormHelperText className="credit">
             Made with ♥️ by Roy Prigat
           </FormHelperText>
@@ -40,6 +32,5 @@ function Login(props: ILoginProps) {
       </ul>
     </div>
   );
-}
 
 export default Login;
